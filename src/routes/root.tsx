@@ -2,9 +2,11 @@ import { Link } from "react-router";
 
 const Root = () => {
   return (
-    <div>
+    <div className="text-2xl flex flex-col">
       Root
-      <Link to="feed">Hello</Link>
+      <Link to="dashboard">Dashboard</Link>
+      <Link to="thread">Thread</Link>
+      <Link to="drawing">Drawing</Link>
     </div>
   );
 };
