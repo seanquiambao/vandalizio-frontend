@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import RootLayout from "../layout/root-layout";
 import Root from "../routes/root";
 import Dashboard from "../routes/dashboard/dashboard";
-import Drawing from "../routes/drawing/drawing";
+import Thread from "../routes/thread/thread";
 
 export const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/drawing",
-        element: <Drawing />,
+        path: "/thread",
+        element: <Thread />,
       },
     ],
   },
