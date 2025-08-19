@@ -6,7 +6,7 @@ type API = {
 };
 
 export const api = async ({ url, method, body, headers }: API) => {
-  const response = await fetch(url, {
+  const response = await fetch(`${import.meta.env.SPRINGBOOT_URL_ADDRESS}/${url}`, {
     method,
     body: JSON.stringify(body),
     headers,
