@@ -1,6 +1,7 @@
 import { INPUTFIELDS } from "../../data/forms/input-fields";
 import type { BaseFields } from "../../types/form-type";
-import Title from "../ui/title";
+import Button from "../ui/button";
+import Subheader from "../ui/subheader";
 
 type FormProps = {
   title: string;
@@ -12,10 +13,24 @@ const Form = ({ title, fields }: FormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Title title={title} />
-      {Object.values(fields).map((field) => INPUTFIELDS[field.input](field))}
-    </form>
+    <div className="bg-white border-black/50 border rounded-md p-2 w-1/2">
+      <form onSubmit={handleSubmit}>
+        <Subheader title={title} divider />
+        <div className="flex flex-col gap-2">
+          {Object.values(fields).map((field) => (
+            <div className="flex flex-col">
+              <div className="text-black text-lg font-bold">
+                {field.title}
+                <span>{field.required && "*"}</span>
+              </div>
+
+              {INPUTFIELDS[field.input](field)}
+            </div>
+          ))}
+          <Button type="submit">Submit</Button>
+        </div>
+      </form>
+    </div>
   );
 };
 
