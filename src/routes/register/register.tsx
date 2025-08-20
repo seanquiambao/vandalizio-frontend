@@ -3,13 +3,27 @@ import type { BaseAttributes } from "../../types/form-type";
 import { REGISTERATTRIBUTES, REGISTERFIELDS } from "../../data/forms/register";
 
 import Form from "../../components/forms/form";
+import Toaster from "../../utils/toaster";
+import { api } from "../../utils/api";
 
 const Register = () => {
   const [attributes, setAttributes] = useState<BaseAttributes>({
     ...REGISTERATTRIBUTES,
   });
-  const handleSubmit = () => {
-    console.log(attributes);
+  const handleSubmit = async () => {
+    try { 
+
+      const response = await api({
+        method: "POST",
+        url: "api/v1/auth/register",
+        body: attributes
+      })
+
+      console.log(response);
+      Toaster("Successfully registered user!", "success")
+    } catch { 
+      Toaster("Failed to register user", "error")
+    }
   };
   return (
     <div>
