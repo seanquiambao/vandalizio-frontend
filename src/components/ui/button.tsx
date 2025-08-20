@@ -10,7 +10,7 @@ const variants: Record<string, string> = {
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
   variant?: string;
-  type: "submit" | "reset" | "button" | undefined;
+  type?: "submit" | "reset" | "button" | undefined;
 }
 
 const Button = ({
