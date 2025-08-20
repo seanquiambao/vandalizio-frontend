@@ -5,12 +5,12 @@ export const INPUTFIELDS: Record<
   string,
   (
     field: Field,
-    setAttributes: React.Dispatch<React.SetStateAction<BaseAttributes>>
+    setAttributes: React.Dispatch<React.SetStateAction<BaseAttributes>>,
   ) => JSX.Element
 > = {
   text: (
     field: TextInput,
-    setAttributes: React.Dispatch<React.SetStateAction<BaseAttributes>>
+    setAttributes: React.Dispatch<React.SetStateAction<BaseAttributes>>,
   ) => {
     return (
       <input

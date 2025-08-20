@@ -1,21 +1,25 @@
-import type { TextInput } from "../../types/form-type";
+import type {
+  BaseAttributes,
+  BaseFields,
+  TextInput,
+} from "../../types/form-type";
 
-interface Attributes {
+interface Attributes extends BaseAttributes {
   username: string;
   password: string;
 }
 
-interface Fields {
+interface Fields extends BaseFields {
   username: TextInput;
   password: TextInput;
 }
 
-export const ATTRIBUTES: Attributes = {
+export const LOGINATTRIBUTES: Attributes = {
   username: "",
   password: "",
 };
 
-export const FIELDS: Fields = {
+export const LOGINFIELDS: Fields = {
   username: {
     input: "text",
     name: "username",

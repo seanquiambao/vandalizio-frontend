@@ -11,18 +11,16 @@ const Register = () => {
     ...REGISTERATTRIBUTES,
   });
   const handleSubmit = async () => {
-    try { 
-
-      const response = await api({
+    try {
+      await api({
         method: "POST",
         url: "api/v1/auth/register",
-        body: attributes
-      })
+        body: attributes,
+      });
 
-      console.log(response);
-      Toaster("Successfully registered user!", "success")
-    } catch { 
-      Toaster("Failed to register user", "error")
+      Toaster("Successfully registered user!", "success");
+    } catch {
+      Toaster("Failed to register user", "error");
     }
   };
   return (
