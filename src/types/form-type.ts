@@ -18,4 +18,5 @@ export type TextInput = Input & {
 
 export type Field = TextInput;
 
+export type BaseAttributes = Record<string, unknown>;
 export type BaseFields = Record<string, Field>;

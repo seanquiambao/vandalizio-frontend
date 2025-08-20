@@ -1,20 +1,23 @@
 import { INPUTFIELDS } from "../../data/forms/input-fields";
-import type { BaseFields } from "../../types/form-type";
+import type { BaseAttributes, BaseFields } from "../../types/form-type";
 import Button from "../ui/button";
 import Subheader from "../ui/subheader";
 
 type FormProps = {
   title: string;
   fields: BaseFields;
+  onSubmit: () => void;
+  setAttributes: React.Dispatch<React.SetStateAction<BaseAttributes>>;
 };
-const Form = ({ title, fields }: FormProps) => {
-  const handleSubmit = () => {
-    console.log("Submitting!");
-  };
-
+const Form = ({ title, fields, onSubmit, setAttributes }: FormProps) => {
   return (
     <div className="bg-white border-black/50 border rounded-md p-2 w-1/2">
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(event: React.ChangeEvent<HTMLFormElement>) => {
+          event.preventDefault();
+          onSubmit();
+        }}
+      >
         <Subheader title={title} divider />
         <div className="flex flex-col gap-2">
           {Object.values(fields).map((field) => (
@@ -24,7 +27,7 @@ const Form = ({ title, fields }: FormProps) => {
                 <span>{field.required && "*"}</span>
               </div>
 
-              {INPUTFIELDS[field.input](field)}
+              {INPUTFIELDS[field.input](field, setAttributes)}
             </div>
           ))}
           <Button type="submit">Submit</Button>
